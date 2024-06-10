@@ -1,0 +1,85 @@
+#aqui no def menu que é uma função sera as função que estar seguindo passo a passo
+#pois essa função menu vai entrar no case pois o usuario vai poder escolher um numero
+#exemplo:eu quero estacionar meu veiculo vou estcolher o numero 1 para colocar os dados
+#do meu automovel.
+
+
+def menu():
+    print("1-estacionar_veiculo")
+    print("2-veiculo_estacionado")
+    print("3-estacionar_veiculo")
+    print("4-retirar_veiculo")
+    print("0-sair")
+
+#aqui nessa função estacionar o veiculo vou colocar uma variavel estacionamento
+#pois vou perdir uma placa e vou colocar um if para saber se o veiculo ja esta 
+#estacionado pois no else vai pedir todos os dados que o carro tem e usei uma 
+#lista e dicionario.
+
+def estacionar_veiculo(estacionamento):
+    placa=input("digite o nome da placa")
+    if placa in estacionamento:
+        print("veiculo ja esta estacionado")
+    else:
+        marca=input("digite a marca do veiculo:")
+        modelo=input("digite o modelo do automovel")
+        cor=input("qual a cor do carro?")
+        proprietario=input("quem é o proprietario")
+        estacionamento[placa]={
+            'marca':marca,
+            'modelo':modelo,
+            'cor': cor,
+            'proprietario':proprietario
+
+        }
+        print("veiculo estacionado")
+
+#aqui nessa função veiculo estacinnado criei um if estacionamento e tanbem
+#coloquei um laço de repetição para pegar os dados do carro que esta estacinado
+
+
+def veiculo_estacionado(estacionamento):
+    if estacionamento:
+        print("veiculo estacionado:")
+        for placas, dados in estacionamento.items():
+            print(f"placa:{placas}, marca:{dados['marca']}, cor:{dados['cor']}, proprietario:{dados['proprietario']}")
+
+#nessa função estacionar veiculo tem a variavel placa e vai pedir a placa do carro
+#criei um if para saber se esta estacionado ou não.
+
+
+def estacionar_veiculo(estacionamento):
+    placa= input("digite o nome da placa automovel")
+    if placa in estacionamento:
+        print("esta estacionado")
+    else:
+        print("não esta estacionado")
+
+#nessa função estacionar veiculo tem a variavel placa e vai pedir a placa do carro
+#criei um if para saber se esta retirado ou não.
+
+
+def retirar_veiculo(estacionamento):
+     placa= input("digite a placa para retirar")
+     if placa in estacionamento:
+         print("esta retirado do estacionado")
+     else:
+         print("veiculo não esta retirado do estacionamento")
+
+#aqui vai puxar a função menu  para escolher o numero que ele quer 
+#por exemplo quero escolher o 4  vai aprecer tudo oque devo fazer para
+#retirar_veiculo.
+
+if __name__ == '__main__':  
+    while True:
+        match menu():
+            case '1':
+                estacionar_veiculo()
+            case '2':
+                veiculo_estacionado()
+            case '3':
+                estacionar_veiculo()
+            case '4':
+                retirar_veiculo()
+            case '0':
+                break
