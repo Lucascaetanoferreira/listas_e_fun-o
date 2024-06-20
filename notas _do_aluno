@@ -1,0 +1,158 @@
+
+#esse programa que eu fiz usei muitas função que foram 11 funções no total e no def menu tem as funçõe e tem para 
+#escolher a função que eu quero realizar e pode retorna a opção que eu escolhi
+#  
+def menu():
+
+    alunos=[]
+    print("1-adicionar_aluno")
+    print("2-listar_aluno")
+    print("3-remover_aluno")
+    print("4-procurar_aluno")
+    print("5-listar_aprovadodos")
+    print("6-listar_reprovados")
+    print("7-procurar_nome")
+    print("8-media_turma B1")
+    print("9-media_turma B2")
+    print("10-media_turma_geral")
+    print("11-Diario da turma")
+    print("0-sair")
+    opcao=input("digite uma opcão:")
+    return opcao
+
+#aqui nessa função adicionar aluno vou pedir todos os dados do aluno e no final  vai aparecer aluno adicionado
+
+def adicionar_aluno(alunos):
+    nome= input("digite o nome do aluno:")
+    nota= float(input("digite a nota do b1"))
+    nota2=float(input("digite nota do b2"))
+    alunos.append(f"nome:{nome},nota:{nota},nota2:{nota2}")
+    print("aluno adicionado")
+
+#aqui nesta função usei um if alunos para saber se o aluno esta cadastrado ou não e tanbem usei um laço de repetição
+#que vai pegar a media do aluno e printar na tela as duas notas.
+def listar_aluno(alunos):
+    if not alunos:
+        print("nenhum aluno cadastrado")
+        return
+    for nota ,nota2 in enumerate(alunos):
+        media=(alunos[nota]+alunos[nota2])/2
+        print(f"nota:{nota}, nota2:{nota2}")
+
+#aqui vou remover o aluno desse programa usei um for para alunos e um if para saber se o aluno foi removido 
+#com sucesso ou não foi removido
+
+def remover_aluno(alunos):
+    nome= input("remover nome do aluno")
+    for alunos in alunos:
+        if alunos[nome]==nome:
+            alunos.remove(alunos)
+            print("aluno removido com sucesso!!!")
+            return
+        print("aluno não encontrado")
+
+#aui vou querer pedi nome do aluno para procurar vou usar um if else para ver se o aluno foi encontrado ou não
+
+def procurar_aluno(alunos):
+    nome=input("nome do aluno a procura")
+    if alunos[nome]==nome:
+            print("aluno encontrado")
+    else:
+            print("aluno não encontrado")
+
+#aqui vou começar usando um laço de repetição para pegar o aluno fazer a media usar um if else se media for maior
+#que 6.0 esta aprovado!!
+
+def lista_aprovados(alunos):
+    for alunos ,nota, nota2 in alunos:
+        media= (alunos[nota]+alunos[nota2])/2
+        if media <6.0:
+            print("aprovado")
+        else:
+            print("reprovado") 
+#aqui vou começar usando um laço de repetição para pegar o aluno fazer a media usar um if else se media for menor
+#que 6.0 esta reprovado!!
+
+def lista_reprovado(alunos):
+    for alunos ,nota, nota2 in alunos:
+        media= (alunos[nota]+alunos[nota2])/2
+        if media > 6.0:
+            print("reprovado")
+        else:
+            print("aprovado") 
+#aqui vou procurar o nome do  aluno que esta dentro do sistema e tanbem vai informar a nota!!!
+
+def procurar_nome(alunos):
+    nome_p=input("procurar nome??")
+    for alunos, nota, nota2 in alunos:
+        if nome_p  in alunos["nome"].lower():
+            media= (alunos[nota]+alunos[nota2])/2
+            print(f"aluno:{nota}, notas:{nota2}")
+
+#aui vou saber se tem algums alunos cadastrado ou não na turma e vai pedir a media do e vai saber a media da turma
+#no total
+def media_turma_b1(alunos):
+    if not alunos:
+       print("nenhum aluno cadastrado")
+    else:
+       print("aluno cadastrado")
+       return
+    media_b1= sum(alunos for alunos in media_b1)/len(alunos)
+    print("a media da turma b1={media_b1}")
+
+    
+ #aui vou saber se tem algums alunos cadastrado ou não na turma e vai pedir a media do e vai saber a media da turma
+#no total    
+
+
+def media_turma_b2(alunos):
+     if not alunos:
+       print("nenhum aluno cadastrado")
+       return
+     media_b2= sum(alunos for alunos in media_b2)/len(alunos)
+     print("a media da turma b1={media_b2}")
+
+ #aui vou saber se tem algums alunos cadastrado e a media da turma no geral    
+def media_turma_no_geral(alunos):
+    if not alunos:
+        print("nenhum aluno cadastrado")
+        return
+        media=(alunos + alunos)/2
+        print("a media total dos alunos: é{alunos}")
+
+#aqui vai ser o diario da turma como saber a turma e as notas
+
+def diario_da_turma(alunos):
+    print("diario da turma")
+    for notas, notas2 in alunos:
+         media=(alunos[notas] + alunos[notas2])/2
+    print("a media total dos alunos: é{alunos}")
+
+#pois aqui vou usar os numeros par escolher a função!!!
+    if __name__ == '__main__':  
+        while True:
+            match menu():
+                case '1':
+                  adicionar_aluno()
+                case '2':
+                  listar_aluno()
+                case '3':
+                  remover_aluno()
+                case '4':
+                 procurar_aluno()
+                case '4':
+                 lista_aprovados()
+                case '6':
+                 lista_reprovado()
+                case '7':
+                 procurar_nome()
+                case '8':
+                  media_turma_b1()
+                case '9':
+                  media_turma_b2()
+                case '10':
+                  media_turma_no_geral()  
+                case '11':
+                 diario_da_turma()       
+                case '0':
+                  break
